@@ -1,7 +1,23 @@
-;; Make sure `use-package' is available.
+(require 'package)
+
+(setq package-archives '(("melpa" . "https://melpa.org/packages/")
+                         ("org" . "https://orgmode.org/elpa/")
+                         ("elpa" . "https://elpa.gnu.org/packages/")))
+
+(package-initialize)
+(unless package-archive-contents
+  (package-refresh-contents))
+
+  ;; Initialize use-package on non-Linux platforms
 (unless (package-installed-p 'use-package)
-  (package-refresh-contents)
   (package-install 'use-package))
+
+(require 'use-package)
+
+;; Make sure `use-package' is available.
+; (unless (package-installed-p 'use-package)
+;   (package-refresh-contents)
+;   (package-install 'use-package))
 
 ;; Configure `use-package' prior to loading it.
 (eval-and-compile
@@ -71,6 +87,9 @@
 ;;; This is the actual config file. It is omitted if it doesn't exist so emacs won't refuse to launch.
 (when (file-readable-p "~/.emacs.d/config.org")
   (org-babel-load-file (expand-file-name "~/.emacs.d/config.org")))
+
+(message "It works")
+
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -127,9 +146,12 @@
  '(quelpa-upgrade-p t)
  '(super-save-mode t)
  '(trash-directory nil))
+
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(org-hide ((t (:foreground "gray17")))))
+
+

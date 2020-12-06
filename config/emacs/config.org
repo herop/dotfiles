@@ -8,7 +8,7 @@
 ** Start Server
 #+begin_src emacs-lisp
 (add-to-list 'load-path "~/org/")
-(require 'org-roam-protocol)
+;; (require 'org-roam-protocol)
 #+end_src
 * Looks
 ** UTF-8
@@ -28,13 +28,13 @@
 #+end_src
 ** Standard font
 #+begin_src emacs-lisp
-  (add-to-list 'default-frame-alist
-                         '(font . "Consolas-8"))
-  (set-face-attribute 'default nil :font "Consolas-8" )
-  (set-frame-font "Consolas-8" nil t)
-  (set-fontset-font t 'symbol "Twitter Color Emoji" nil 'append)
-  (global-set-key (kbd "C-c i") #'text-scale-increase)
-  (global-set-key (kbd "C-c d") #'text-scale-decrease)
+  ;; (add-to-list 'default-frame-alist
+  ;;                        '(font . "Consolas-8"))
+  ;; (set-face-attribute 'default nil :font "Consolas-8" )
+  ;; (set-frame-font "Consolas-8" nil t)
+  ;; (set-fontset-font t 'symbol "Twitter Color Emoji" nil 'append)
+  ;; (global-set-key (kbd "C-c i") #'text-scale-increase)
+  ;; (global-set-key (kbd "C-c d") #'text-scale-decrease)
 #+end_src
 ** Remove lame startup screen
 #+begin_src emacs-lisp
@@ -42,14 +42,14 @@
 #+end_src
 ** All-the-icons
 #+begin_src emacs-lisp
-  (require 'all-the-icons)
-(setq inhibit-compacting-font-caches t)
-  (set-fontset-font t 'unicode (font-spec :family "all-the-icons") nil 'append)
-(set-fontset-font t 'unicode (font-spec :family "file-icons") nil 'append)
-(set-fontset-font t 'unicode (font-spec :family "Material Icons") nil 'append)
-(set-fontset-font t 'unicode (font-spec :family "github-octicons") nil 'append)
-(set-fontset-font t 'unicode (font-spec :family "FontAwesome") nil 'append)
-(set-fontset-font t 'unicode (font-spec :family "Weather Icons") nil 'append)
+;; (require 'all-the-icons)
+;; (setq inhibit-compacting-font-caches t)
+;; (set-fontset-font t 'unicode (font-spec :family "all-the-icons") nil 'append)
+;; (set-fontset-font t 'unicode (font-spec :family "file-icons") nil 'append)
+;; (set-fontset-font t 'unicode (font-spec :family "Material Icons") nil 'append)
+;; (set-fontset-font t 'unicode (font-spec :family "github-octicons") nil 'append)
+;; (set-fontset-font t 'unicode (font-spec :family "FontAwesome") nil 'append)
+;; (set-fontset-font t 'unicode (font-spec :family "Weather Icons") nil 'append)
 #+end_src
 ** Unicode-Fonts
 #+begin_src emacs-lisp
@@ -76,15 +76,15 @@
 * Functionality
 ** Windows-Keys
 #+begin_src emacs-lisp
-  (setq w32-pass-lwindow-to-system nil)
-  (setq w32-lwindow-modifier 'super) ; Left Windows key
-  (w32-register-hot-key [s-])
-  (w32-register-hot-key [M-tab])
+  ;; (setq w32-pass-lwindow-to-system nil)
+  ;; (setq w32-lwindow-modifier 'super) ; Left Windows key
+  ;; (w32-register-hot-key [s-])
+  ;; (w32-register-hot-key [M-tab])
 #+end_src
 ** Discover.el for context-menues
 #+begin_src emacs-lisp
-  (require 'discover)
-  (global-discover-mode 1)
+  ;; (require 'discover)
+  ;; (global-discover-mode 1)
 #+end_src
 ** So Long prevents performacs issues if lines of text are very long
 #+begin_src emacs-lisp
@@ -160,18 +160,18 @@
 #+END_SRC
 * Elfeed
 #+begin_src emacs-lisp
-  (global-set-key (kbd "C-x n f") 'elfeed)
-  (setq-default elfeed-search-filter "@1-week-ago +unread ")
-  (setq elfeed-feeds
-          '(("https://aeon.co/feed.rss" aeon.co)
-            ("https://psyche.co/feed.rss" psyche.co)
-            ("https://planet.emacslife.com/atom.xml" emacslife)
-            ("https://www.ecb.europa.eu/rss/press.html" ECB-Europa)
-            ("https://www.youtube.com/feeds/videos.xml?channel_id=UC0uTPqBCFIpZxlz_Lv1tk_g" YoutUbe)
-            ("https://protesilaos.com/politics.xml" Prot)))
-  (require 'elfeed-goodies)
-
-  (elfeed-goodies/setup)
+;; (global-set-key (kbd "C-x n f") 'elfeed)
+;; (setq-default elfeed-search-filter "@1-week-ago +unread ")
+;; (setq elfeed-feeds
+;;         '(("https://aeon.co/feed.rss" aeon.co)
+;;           ("https://psyche.co/feed.rss" psyche.co)
+;;           ("https://planet.emacslife.com/atom.xml" emacslife)
+;;           ("https://www.ecb.europa.eu/rss/press.html" ECB-Europa)
+;;           ("https://www.youtube.com/feeds/videos.xml?channel_id=UC0uTPqBCFIpZxlz_Lv1tk_g" YoutUbe)
+;;           ("https://protesilaos.com/politics.xml" Prot)))
+;; (require 'elfeed-goodies)
+;;
+;; (elfeed-goodies/setup)
 #+end_src
 * EWW browser
 ** Open Links in eww (use F to toggle fonts)
@@ -199,7 +199,7 @@
     :ensure t
     :config
       (dashboard-setup-startup-hook)
-      (setq dashboard-startup-banner "~/.emacs.d/img/dashLogo.png")
+      (setq dashboard-startup-banner "~/.config/emacs/img/dashLogo.png")
       (setq dashboard-items '((recents  . 5)
                               (projects . 5)))
       (setq dashboard-banner-logo-title "")
@@ -561,10 +561,10 @@
 
 ** Rainbow (colors for hex-code)
 #+begin_src emacs-lisp
-(use-package rainbow-mode
-  :ensure t
-  :init
-    (add-hook 'prog-mode-hook 'rainbow-mode))
+;; (use-package rainbow-mode
+;;   :ensure t
+;;   :init
+;;     (add-hook 'prog-mode-hook 'rainbow-mode))
 #+end_src
 
 ** Show parent (brackets highlights)
@@ -604,7 +604,7 @@
 
 ** Wnole Line or Region
 #+begin_src emacs-lisp
-(require 'whole-line-or-region)
+;; (require 'whole-line-or-region)
 #+end_src
 ** Annotation.el
 #+begin_src emacs-lisp
@@ -827,8 +827,6 @@
         :ensure t
         :init
         (add-hook 'after-init-hook 'org-roam-mode)
-        :custom
-        (setq org-roam-directory (file-truename "C:/Users/JochenBurkhardi/CloudDrive/Cloud~com~appsonthemove~beorg/org/"))
         :bind (:map org-roam-mode-map
                 (("C-c n l" . org-roam)
                  ("C-c n f" . org-roam-find-file)
@@ -849,6 +847,7 @@
       (setq org-todo-keywords
             '((sequence "TODO(t)" "NEXT(n)" "PROJECT(p)" "ONIT(o)" "WAIT(w@/!)" "MEETING(m@)" "|" "DONE(d!)" "CANCELLED(c@)")))
       (setq org-roam-list-files-commands '(elisp))
+      (setq org-roam-directory (expand-file-name "~/org/"))
       (setq org-roam-completion-everywhere t) 
       (setq org-roam-buffer-position 'right)
       (setq org-roam-buffer-width 0.15)

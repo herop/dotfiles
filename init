@@ -1,0 +1,46 @@
+#!/usr/bin/env bb
+;; Helpers ====================================
+(ns init
+  (:require
+    [clojure.string :as str]
+    [babashka.process :as p]
+    [clojure.java.io :as io]))
+
+(def install-me 
+  [{:package/name "fdffdfdfdfdfdfd"}])
+
+(def link-me
+  [{:from "xprofile" :to "~/.xprofile" }
+   {:from "bashrc" :to "~/.bashrc" }
+   {:from "xinitrc" :to "~/.xinitrc" }
+   {:from "Xresources" :to "~/.Xresources" }
+   {:from "config" :to "~/.config" }])
+
+(defn isdir
+  "check if current path directory."
+  [path]
+  (.isDirectory (io/file path)))
+
+(defn cwd []
+  (System/getProperty "user.dir"))
+
+(defn expand [path]
+  (cond
+    (str/includes? path "~")
+    (str/replace path #"~" (System/getProperty "user.home"))))
+
+(defn- link
+  "Delete `target` and replace it with `path`"
+  [path target]
+  (let [f (str (cwd) "/" path)
+        t (expand target)]
+    (if (isdir path)
+      (p/$ rm -rf ~t)
+      (p/$ rm ~t))
+    (p/$ ln -sf ~f ~t)))
+
+(defn -main []
+  (map #(link (:from %) (:to %)) link-me))
+
+(-main)
+; vim: set filetype=clojure:
