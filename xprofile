@@ -11,4 +11,4 @@ remap &
 xss-lock -- slock &
 
 # Fire it up
-exec dbus-launch --exit-with-session emacs -mm --debug-init -l ~/.config/emacs/init.el
+#exec dbus-launch --exit-with-session emacs -mm --debug-init -l ~/.config/emacs/init.el
