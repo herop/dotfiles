@@ -15,7 +15,7 @@
    {:from "xinitrc" :to "~/.xinitrc" }
    {:from "Xresources" :to "~/.Xresources" }
    {:from "bin" :to "~/.bin" }
-   {:from "config" :to "~/.config" }])
+   {:from "config" :to "~/.config"}])
 
 (defn isdir
   "check if current path directory."
@@ -33,12 +33,12 @@
 (defn- link
   "Delete `target` and replace it with `path`"
   [path target]
-  (let [f (str (cwd) "/" path)
+  (let [p (str (cwd) "/" path)
         t (expand target)]
-    (if (isdir path)
+    (if (isdir p)
       (p/$ rm -rf ~t)
       (p/$ rm ~t))
-    (p/$ ln -sf ~f ~t)))
+    (p/$ ln -sf ~p ~t)))
 
 (defn -main []
   (map #(link (:from %) (:to %)) link-me))
