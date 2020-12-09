@@ -2,7 +2,7 @@
 killall xcape 2>/dev/null
 xset r rate 350 60
 xmodmap -pke > defaults
-setxkbmap -layout us -option
+setxkbmap -layout ch -option
 xmodmap -e 'clear Lock'
 setxkbmap -option ctrl:nocaps
 xcape -e 'Control_L=Escape' -t 200
