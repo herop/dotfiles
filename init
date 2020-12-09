@@ -6,7 +6,7 @@
     [babashka.process :as p]
     [clojure.java.io :as io]))
 
-(def install-me 
+(def install-me
   [{:package/name "fdffdfdfdfdfdfd"}])
 
 (def link-me
@@ -14,6 +14,7 @@
    {:from "bashrc" :to "~/.bashrc" }
    {:from "xinitrc" :to "~/.xinitrc" }
    {:from "Xresources" :to "~/.Xresources" }
+   {:from "bin" :to "~/.bin" }
    {:from "config" :to "~/.config" }])
 
 (defn isdir
