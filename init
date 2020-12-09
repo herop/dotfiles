@@ -15,7 +15,7 @@
    {:from "xinitrc" :to "~/.xinitrc" }
    {:from "Xresources" :to "~/.Xresources" }
    {:from "bin" :to "~/.bin" }
-   {:from "config" :to "~/.config"}])
+   {:from "config/doom" :to "~/.doom.d"}])
 
 (defn isdir
   "check if current path directory."
